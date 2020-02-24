@@ -1,28 +1,29 @@
 {% set name = "discord.py" %}
-{% set version = "1.0.1" %}
+{% set version = "1.3.2" %}
 
 package:
   name: "{{ name|lower }}"
   version: "{{ version }}"
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 173b5e2fea2e012bbe964e87e92826ccaf97056bba539a7caec988f329acca04
+  url: https://github.com/Rapptz/{{ name }}/archive/v{{ version }}.tar.gz
+  sha256: 023ee21efc0f3a0dad06c0574f19e63111cb72a8864569e5f2e15ed70e3fd2df
 
 build:
   number: 0
   script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv "
+  noarch: python
 
 requirements:
   host:
     - aiohttp >=3.3.0,<3.6.0
     - pip
     - python
-    - websockets >=6.0,<7.0
+    - websockets # >=6.0,<7.0
   run:
     - aiohttp >=3.3.0,<3.6.0
     - python
-    - websockets >=6.0,<7.0
+    - websockets # >=6.0,<7.0
 
 test:
   imports:
